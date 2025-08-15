@@ -1,0 +1,9 @@
+@EndUserText.label: 'Access control for ZI_FILE_BUFFER'
+@MappingRole: true
+define role ZI_FILE_BUFFER {
+    grant
+        select
+            on
+                ZI_FILE_BUFFER; 
+                
+}

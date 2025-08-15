@@ -1,0 +1,9 @@
+@EndUserText.label: 'Access control for ZI_FILE_LINE'
+@MappingRole: true
+define role ZI_FILE_LINE {
+    grant
+        select
+            on
+                ZI_FILE_LINE; 
+                
+}

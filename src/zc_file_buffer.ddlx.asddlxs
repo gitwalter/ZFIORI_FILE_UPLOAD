@@ -1,0 +1,72 @@
+@Metadata.layer: #CORE
+@UI: { headerInfo: {
+typeName: 'File',
+typeNamePlural: 'Files',
+title: { type: #STANDARD, value: 'FileName' },
+         description: { type: #STANDARD, value: 'FileUploadProcess' } },
+         presentationVariant: [{
+         sortOrder: [{ by: 'FileName', direction: #ASC }],
+         visualizations: [{type: #AS_LINEITEM}] }] }
+annotate view ZC_FILE_BUFFER with
+{
+
+  @UI.facet: [    {
+          purpose:  #STANDARD,
+          type:     #LINEITEM_REFERENCE,
+          label:    'File Content',
+          position: 70,
+          targetElement: '_FileLine'
+        },
+                {
+                label: 'General Information',
+                id: 'GeneralInfo',
+                type: #COLLECTION,
+                position: 10
+                },
+                     { id:            'Filedet',
+                    purpose:       #STANDARD,
+                    type:          #IDENTIFICATION_REFERENCE,
+                    label:         'File Details',
+                    parentId: 'GeneralInfo',
+                    position:      10 },
+                  {
+                      id: 'Upload',
+                      purpose: #STANDARD,
+                      type: #FIELDGROUP_REFERENCE,
+                      parentId: 'GeneralInfo',
+                      label: 'Upload File',
+                      position: 20,
+                      targetQualifier: 'Upload'
+                  },
+                  { id: 'FacetChange', label: 'Change Information',
+                    type: #FIELDGROUP_REFERENCE,
+                    parentId: 'GeneralInfo',
+                    targetQualifier: 'Change',
+                    position : 30 } ]
+
+  @UI.lineItem: [{ position: 5 }]
+  @UI.identification: [{ position: 5, label: 'Process' }]
+  FileUploadProcess;
+
+  @UI.lineItem: [{ position: 10, label : 'Filename' }]
+  @UI.identification: [{ position: 10, label: 'Filename' }]
+  FileName;
+
+  @UI.lineItem: [{ position: 20, label: 'Mime Type' }]
+  @UI.identification: [{ position: 20, label: 'Mime Type'  }]
+  MimeType;
+
+  @UI.lineItem: [{ position: 30 }]
+  @UI.fieldGroup: [{qualifier: 'Change', position: 30, importance: #HIGH}]
+  LastChangedAt;
+
+  @UI.lineItem: [{ position: 40 }]
+  @UI.fieldGroup: [{qualifier: 'Change', position: 40, importance: #HIGH}]
+  LastChangedBy;
+
+  @UI:
+  { fieldGroup:     [ { position: 50, qualifier: 'Upload' , label: 'Attachment'} ]}
+  Content;
+
+
+}

@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service for file buffer'
+define service Z_FILE_BUFFER_SRV {
+  expose ZC_FILE_BUFFER;
+  expose ZC_File_Line;
+}

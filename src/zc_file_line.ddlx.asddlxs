@@ -1,0 +1,20 @@
+@Metadata.layer: #CORE
+annotate entity ZC_File_Line with
+{
+
+  @UI.facet:  [ { id:            'Line',
+                  purpose:       #STANDARD,
+                  type:          #IDENTIFICATION_REFERENCE,
+                  label:         'Content',
+                  position:      10 } ]
+
+
+  @UI.lineItem: [{ position: 5, label: 'Line' }]
+  @UI.identification: [{ position: 5, label: 'Line' } ]
+  LineNumber;
+
+  @UI.lineItem: [{ position: 10, label: 'Content' }]
+  @UI.identification: [{ position: 10, label: 'Content' } ]
+  LineContent;
+
+}

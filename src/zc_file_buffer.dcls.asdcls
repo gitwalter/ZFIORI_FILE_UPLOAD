@@ -1,0 +1,9 @@
+@EndUserText.label: 'Access control for ZC_FILE_BUFFER'
+@MappingRole: true
+define role ZC_FILE_BUFFER {
+    grant
+        select
+            on
+                ZC_FILE_BUFFER; 
+                
+}

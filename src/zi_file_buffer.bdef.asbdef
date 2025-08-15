@@ -1,0 +1,67 @@
+managed implementation in class zbp_i_file_buffer unique;
+strict ( 2 );
+with draft;
+
+define behavior for ZI_FILE_BUFFER //alias <alias_name>
+persistent table zfile_buffer
+draft table zfile_buffer_d
+lock master
+total etag LastChangedAt
+etag master LastChangedAt
+authorization master ( instance )
+{
+  create;
+  update;
+  delete;
+  field ( numbering : managed, readonly ) uuid;
+  draft action Edit;
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Resume;
+  draft determine action Prepare;
+
+  determination process_file_content on save { field FileUploadProcess; create; update; }
+
+  field ( features : instance ) FileUploadProcess, Filename, Mimetype, Content;
+
+  field ( readonly ) LastChangedAt, LastChangedBy;
+
+  association _FileLine { create; with draft; }
+
+  mapping for zfile_buffer
+    {
+      Uuid              = uuid;
+      FileName          = filename;
+      FileUploadProcess = file_upload_process;
+      MimeType          = mimetype;
+      Content           = content;
+      LastChangedAt     = last_changed_at;
+      LastChangedBy     = last_changed_by;
+    }
+}
+
+define behavior for ZI_File_Line //alias <alias_name>
+persistent table zfile_line
+draft table zfile_line_d
+lock dependent by _FileBuffer
+authorization dependent by _FileBuffer
+etag master LastChangedAt
+{
+  update;
+  delete;
+  field ( readonly ) uuid;
+  field ( numbering : managed, readonly ) lineuuid;
+
+  association _FileBuffer { with draft; }
+
+  mapping for zfile_line
+    {
+      LineContent   = line_content;
+      LineUuid      = line_uuid;
+      LineNumber    = line_number;
+      Uuid          = uuid;
+      LastChangedAt = last_changed_at;
+      LastChangedBy = last_changed_by;
+    }
+
+}

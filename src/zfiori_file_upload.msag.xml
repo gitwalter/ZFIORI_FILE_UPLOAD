@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<abapGit version="v1.0.0" serializer="LCL_OBJECT_MSAG" serializer_version="v1.0.0">
+ <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
+  <asx:values>
+   <T100A>
+    <ARBGB>ZFIORI_FILE_UPLOAD</ARBGB>
+    <MASTERLANG>E</MASTERLANG>
+    <STEXT>Message for Fiori File Upload</STEXT>
+   </T100A>
+   <T100>
+    <T100>
+     <SPRSL>E</SPRSL>
+     <ARBGB>ZFIORI_FILE_UPLOAD</ARBGB>
+     <MSGNR>001</MSGNR>
+     <TEXT>File &amp;1 has been processed</TEXT>
+    </T100>
+   </T100>
+  </asx:values>
+ </asx:abap>
+</abapGit>
