@@ -240,7 +240,3 @@ ENDCLASS.
 
 - `src/` – ABAP sources (classes, interfaces, behavior, table types, services)
 - UI5 artifacts under `src/zfile_upload.wapa.*` integrate with the RAP service (not covered in detail here).
-
-## License
-
-Specify license terms here.
